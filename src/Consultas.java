@@ -3,6 +3,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,15 +11,22 @@ import java.util.Scanner;
 
 
 public class Consultas {
-    private Crud crud;
-
+    private LeArquivos leArquivos;
+    private ArrayList<RegistroDoTempo> registros;
+    
     public Consultas(){
-       crud = new Crud();
+       leArquivos = new LeArquivos();
+       leArquivos.carregaDados();
+       registros = leArquivos.cloneRegistros();
+       
     }
-    crud.cloneRegistros();
+    
+
+
        
 
     public List<String> datasEmQueChouveuMaisDe(double milimetros){
+
         return registros
             .stream()
             .filter(r->r.getPrecipitacaoMaxima() > milimetros)

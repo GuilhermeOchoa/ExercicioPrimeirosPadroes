@@ -1,26 +1,23 @@
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
+import java.io.BufferedReader;
 
-public class Crud(){
+import javafx.scene.shape.Path;
 
-    /**
-     *
-     */
-    private ArrayList<RegistroDoTempo> registro;
+public class LeArquivos {
+    // classe para ler arquivos
+    private ArrayList<RegistroDoTempo> registros; 
     private String nArq;
 
-    public Crud() {
-        registro = new ArrayList<>();
+    public LeArquivos() {
+        registros =new ArrayList<RegistroDoTempo>();
         this.nArq = "poa_temps.txt";
     }
+    
     public void carregaDados(){
         String currDir = Paths.get("").toAbsolutePath().toString();
         // Monta o nome do arquivo
@@ -59,8 +56,9 @@ public class Crud(){
          }
     }
 
-    public List<RegistroDoTempo> cloneRegistros() {
-        return(List<RegistroDoTempo>) registros.clone();
+    public ArrayList<RegistroDoTempo> cloneRegistros() {
+       return (ArrayList<RegistroDoTempo>)registros.clone();
     }
-}
 
+
+}
